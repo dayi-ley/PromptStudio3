@@ -1,0 +1,47 @@
+# ------------------------------------
+# Ignorar entorno virtual
+IAprompt/
+venv/
+.venv/
+
+# Archivos de cache de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Archivos temporales
+*.log
+*.pot
+*.tmp
+*.temp
+*.swp
+
+# Configuración y metadatos de entornos
+.env
+.env.*
+*.env
+*.ini
+*.toml
+*.cfg
+
+# Archivos de salida / builds
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Configuración de IDEs / editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Archivos de Jupyter Notebook
+.ipynb_checkpoints
+
+# PyInstaller
+*.spec
+
+# Otros
+.DS_Store
+Thumbs.db

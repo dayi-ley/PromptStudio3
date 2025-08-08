@@ -1,0 +1,51 @@
+{
+  "reglas_inferencia": {
+    "pose_actitud_global": {
+      "sitting": {
+        "pose_brazos": ["manos sobre piernas", "apoyadas en la silla"],
+        "pose_piernas": ["piernas cruzadas", "una pierna doblada"],
+        "actitud_emocion": ["tranquila", "relajada"]
+      },
+      "lying down": {
+        "pose_brazos": ["extendidos", "detrás de la cabeza"],
+        "pose_piernas": ["estiradas", "ligeramente flexionadas"]
+      }
+    },
+    "nsfw": {
+      "nsfw": {
+        "_bloquear": ["vestuario_superior", "vestuario_inferior", "ropa_interior_superior", "ropa_interior_inferior"]
+      },
+      "explicit": {
+        "_bloquear": ["vestuario_general", "vestuario_superior", "vestuario_inferior"]
+      }
+    },
+    "vestuario_general": {
+      "swimwear": {
+        "_bloquear": ["vestuario_superior", "vestuario_inferior"]
+      }
+    }
+  },
+  "conflictos": [
+    ["nsfw", "vestuario_superior"],
+    ["nsfw", "vestuario_inferior"],
+    ["vestuario_general", "vestuario_superior"],
+    ["ropa_interior_superior", "vestuario_superior"]
+  ],
+  "prioridades": {
+    "calidad_tecnica": 15,
+    "estilo_artistico": 14,
+    "nsfw": 13,
+    "pose_actitud_global": 12,
+    "expresion_facial_ojos": 11,
+    "vestuario_general": 10,
+    "cabello_forma": 9,
+    "ojos": 8,
+    "vestuario_superior": 7,
+    "vestuario_inferior": 6,
+    "pose_brazos": 5,
+    "pose_piernas": 4,
+    "fondo": 3,
+    "tipo_iluminacion": 2,
+    "atmosfera_vibe": 1
+  }
+}
