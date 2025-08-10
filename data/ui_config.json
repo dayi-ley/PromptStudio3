@@ -1,20 +1,19 @@
 {
   "hidden_categories": [
+    "composicion",
+    "loras_estilos_artistico",
+    "loras_personaje",
+    "estilo_artistico",
+    "calidad_tecnica",
+    "fondo",
+    "accion_actual",
+    "etnia",
+    "loras_modelos_especificos",
     "loras_detalles_mejoras",
     "atmosfera_vibe",
-    "angulo",
-    "loras_modelos_especificos",
     "sombras",
-    "tipo_iluminacion",
-    "composicion",
-    "etnia",
-    "loras_personaje",
     "color_luz",
-    "accion_actual",
-    "fondo",
-    "calidad_tecnica",
-    "estilo_artistico",
-    "loras_estilos_artistico"
+    "tipo_iluminacion"
   ],
   "disabled_categories": [
     "relacion_con_entorno"

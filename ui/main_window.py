@@ -174,7 +174,8 @@ class MainWindow(QMainWindow):
         self.category_panel.suggestion_requested.connect(self.suggestion_panel.update_suggestions_tree)
         # Conectar aplicación de sugerencias
         self.suggestion_panel.suggestion_applied.connect(self.on_suggestion_applied)
-        
+        # NUEVA CONEXIÓN: Actualizar prompt cuando cambie el contexto
+        self.suggestion_panel.prompt_updated.connect(self.generate_prompt)
     def on_category_changed(self, category, value):
         """Se ejecuta cuando cambia el valor de una categoría"""
         # Solo generar el prompt, las sugerencias se manejan por separado
@@ -219,3 +220,29 @@ class MainWindow(QMainWindow):
         
         # Actualizar el prompt
         self.generate_prompt()
+        
+        # NUEVA LÍNEA: Mantener las sugerencias visibles
+        # Buscar la categoría original que generó las sugerencias
+        original_category = None
+        original_value = None
+        
+        # Buscar en vestuario_general primero (ya que es la categoría principal)
+        if 'vestuario_general' in self.category_panel.category_inputs:
+            vestuario_general_input = self.category_panel.category_inputs['vestuario_general']['line_edit']
+            if vestuario_general_input.text().strip():
+                original_category = 'vestuario_general'
+                original_value = vestuario_general_input.text().strip()
+        
+        # Si no hay vestuario_general, buscar en otras categorías de vestuario
+        if not original_category:
+            for cat in ['vestuario_superior', 'vestuario_inferior', 'vestuario_accesorios']:
+                if cat in self.category_panel.category_inputs:
+                    cat_input = self.category_panel.category_inputs[cat]['line_edit']
+                    if cat_input.text().strip() and cat != category:  # No usar la categoría que acabamos de cambiar
+                        original_category = cat
+                        original_value = cat_input.text().strip()
+                        break
+        
+        # Si encontramos una categoría original, actualizar las sugerencias
+        if original_category and original_value:
+            self.suggestion_panel.update_suggestions_tree(original_category, original_value)

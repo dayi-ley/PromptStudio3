@@ -1,93 +1,29 @@
+import json
+import os
+
 class SuggestionEngine:
     def __init__(self):
-        self.suggestion_rules = self._init_suggestion_rules()
+        self.suggestion_rules = self._load_suggestion_rules()
         
-    def _init_suggestion_rules(self):
-        """Inicializa las reglas de sugerencias basadas en relaciones"""
-        return {
-            'pose_global': {
-                'sitting': {
-                    'pose_brazos': ['hands on lap', 'hands on knees', 'arms crossed'],
-                    'pose_piernas': ['legs crossed', 'legs together', 'feet flat on floor'],
-                    'expresion': ['relaxed', 'comfortable', 'casual'],
-                    'vestuario_inferior': ['skirt', 'dress', 'comfortable pants']
-                },
-                'standing': {
-                    'pose_brazos': ['arms at sides', 'hands on hips', 'one hand on hip'],
-                    'pose_piernas': ['legs slightly apart', 'weight on one leg', 'legs together'],
-                    'expresion': ['confident', 'alert', 'ready'],
-                    'accion': ['posing', 'waiting', 'looking ahead']
-                },
-                'lying down': {
-                    'pose_brazos': ['arms above head', 'arms at sides', 'one arm under head'],
-                    'pose_piernas': ['legs straight', 'legs bent', 'legs crossed'],
-                    'expresion': ['relaxed', 'sleepy', 'peaceful'],
-                    'accion': ['resting', 'sleeping', 'reading']
-                },
-                'walking': {
-                    'pose_brazos': ['arms swinging', 'hands in pockets', 'carrying bag'],
-                    'pose_piernas': ['one foot forward', 'mid-stride', 'dynamic pose'],
-                    'expresion': ['focused', 'happy', 'determined'],
-                    'accion': ['moving forward', 'going somewhere', 'in motion']
-                }
-            },
-            'vestuario_superior': {
-                'school uniform': {
-                    'vestuario_inferior': ['pleated skirt', 'school skirt', 'uniform pants'],
-                    'accesorios': ['school bag', 'hair ribbon', 'school badge'],
-                    'fondo': ['classroom', 'school hallway', 'school yard'],
-                    'accion': ['studying', 'walking to class', 'talking with friends']
-                },
-                'casual shirt': {
-                    'vestuario_inferior': ['jeans', 'casual skirt', 'shorts'],
-                    'accesorios': ['casual bag', 'simple jewelry', 'sneakers'],
-                    'expresion': ['relaxed', 'casual', 'friendly']
-                },
-                'formal dress': {
-                    'accesorios': ['elegant jewelry', 'formal shoes', 'clutch bag'],
-                    'expresion': ['elegant', 'sophisticated', 'confident'],
-                    'fondo': ['formal setting', 'elegant room', 'event venue']
-                }
-            },
-            'expresion': {
-                'smiling': {
-                    'ojos': ['bright eyes', 'sparkling eyes', 'happy eyes'],
-                    'accion': ['laughing', 'enjoying', 'having fun'],
-                    'pose_global': ['relaxed pose', 'open posture']
-                },
-                'serious': {
-                    'ojos': ['focused eyes', 'intense gaze', 'determined eyes'],
-                    'pose_brazos': ['crossed arms', 'hands clasped'],
-                    'accion': ['concentrating', 'thinking', 'working']
-                },
-                'surprised': {
-                    'ojos': ['wide eyes', 'shocked expression'],
-                    'pose_brazos': ['hands to face', 'hands up'],
-                    'accion': ['reacting', 'discovering', 'amazed']
-                }
-            },
-            'accion': {
-                'reading': {
-                    'pose_global': ['sitting', 'lying down'],
-                    'pose_brazos': ['holding book', 'hands on book'],
-                    'expresion': ['concentrated', 'peaceful', 'absorbed'],
-                    'accesorios': ['glasses', 'bookmark']
-                },
-                'studying': {
-                    'pose_global': ['sitting'],
-                    'pose_brazos': ['writing', 'holding pen'],
-                    'expresion': ['focused', 'concentrated'],
-                    'fondo': ['desk', 'library', 'study room'],
-                    'accesorios': ['books', 'notebooks', 'pen']
-                },
-                'dancing': {
-                    'pose_global': ['dynamic pose', 'mid-movement'],
-                    'pose_brazos': ['arms raised', 'graceful arms'],
-                    'expresion': ['joyful', 'energetic', 'passionate'],
-                    'vestuario_superior': ['flowing top', 'dance outfit']
-                }
-            }
-        }
+    def _load_suggestion_rules(self):
+        """Carga las reglas de sugerencias desde el archivo JSON"""
+        try:
+            # Obtener la ruta del archivo JSON
+            current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            json_path = os.path.join(current_dir, 'data', 'suggestion_rules.json')
+            
+            # Cargar el archivo JSON
+            with open(json_path, 'r', encoding='utf-8') as file:
+                return json.load(file)
+        except FileNotFoundError:
+            print(f"Archivo de reglas de sugerencias no encontrado: {json_path}")
+            return {}
+        except json.JSONDecodeError as e:
+            print(f"Error al decodificar JSON: {e}")
+            return {}
+        except Exception as e:
+            print(f"Error al cargar reglas de sugerencias: {e}")
+            return {}
         
     def get_suggestions(self, trigger_category, trigger_value):
         """Obtiene sugerencias basadas en una categoría y valor específicos"""
@@ -104,9 +40,103 @@ class SuggestionEngine:
                         if related_category not in suggestions:
                             suggestions[related_category] = []
                         suggestions[related_category].extend(values)
+        
+        # NUEVA LÓGICA: Relaciones especiales para subcategorías de vestuario
+        if trigger_category.startswith('vestuario_'):
+            # Si seleccionamos algo de vestuario_general, sugerir para todas las subcategorías
+            if trigger_category == 'vestuario_general':
+                self._add_vestuario_suggestions(suggestions, 'vestuario_superior', trigger_value)
+                self._add_vestuario_suggestions(suggestions, 'vestuario_inferior', trigger_value)
+                self._add_vestuario_suggestions(suggestions, 'vestuario_accesorios', trigger_value)
+                self._add_vestuario_suggestions(suggestions, 'ropa_interior_superior', trigger_value)
+                self._add_vestuario_suggestions(suggestions, 'ropa_interior_inferior', trigger_value)
+            
+            # Si seleccionamos algo de vestuario_superior, sugerir para vestuario_inferior
+            elif trigger_category == 'vestuario_superior':
+                self._add_vestuario_suggestions(suggestions, 'vestuario_inferior', trigger_value)
+                self._add_vestuario_suggestions(suggestions, 'vestuario_accesorios', trigger_value)
+            
+            # Si seleccionamos algo de vestuario_inferior, sugerir para vestuario_superior
+            elif trigger_category == 'vestuario_inferior':
+                self._add_vestuario_suggestions(suggestions, 'vestuario_superior', trigger_value)
+                self._add_vestuario_suggestions(suggestions, 'vestuario_accesorios', trigger_value)
                         
         # Remover duplicados
         for category in suggestions:
             suggestions[category] = list(set(suggestions[category]))
             
         return suggestions
+    
+    def _add_vestuario_suggestions(self, suggestions, target_category, trigger_value):
+        """Añade sugerencias específicas de vestuario basadas en estilo y coherencia"""
+        # Mapeo de estilos
+        style_mapping = {
+            'casual': ['t-shirt', 'jeans', 'sneakers', 'casual'],
+            'formal': ['blouse', 'dress pants', 'heels', 'elegant'],
+            'edgy': ['leather', 'boots', 'dark', 'rock'],
+            'summer': ['light', 'sandals', 'fresh', 'outdoor']
+        }
+        
+        # Detectar estilo del trigger_value
+        detected_style = None
+        for style, keywords in style_mapping.items():
+            if any(keyword in trigger_value.lower() for keyword in keywords):
+                detected_style = style
+                break
+        
+        # Añadir sugerencias basadas en el estilo detectado
+        if detected_style and detected_style in self.suggestion_rules.get('estilo_coordinado', {}):
+            style_suggestions = self.suggestion_rules['estilo_coordinado'][detected_style + '_style']
+            if target_category in style_suggestions:
+                if target_category not in suggestions:
+                    suggestions[target_category] = []
+                suggestions[target_category].extend(style_suggestions[target_category])
+        
+        # Remover duplicados
+        for category in suggestions:
+            suggestions[category] = list(set(suggestions[category]))
+            
+        return suggestions
+
+    def get_combinations(self, category, value):
+        """Obtiene combinaciones específicas para una prenda"""
+        combinations = {}
+        
+        print(f"Buscando combinaciones para: {category} - {value}")  # Debug
+        
+        # Buscar en las reglas de combinaciones
+        if 'combinaciones_vestuario' in self.suggestion_rules:
+            # Normalizar el valor para buscar
+            search_key = value.lower().replace(' ', '_')
+            
+            combo_rules = self.suggestion_rules['combinaciones_vestuario']
+            
+            print(f"Buscando clave: {search_key}")  # Debug
+            print(f"Claves disponibles: {list(combo_rules.keys())}")  # Debug
+            
+            if search_key in combo_rules:
+                combo_data = combo_rules[search_key]
+                
+                print(f"Datos de combinación encontrados: {combo_data}")  # Debug
+                
+                # Obtener combinaciones compatibles
+                for combo_type, items in combo_data.items():
+                    if combo_type.startswith('compatible_') and isinstance(items, list):
+                        # Mapear los tipos de combinación a categorías
+                        if combo_type == 'compatible_superior':
+                            combinations['vestuario_superior'] = items
+                        elif combo_type == 'compatible_inferior':
+                            combinations['vestuario_inferior'] = items
+                        elif combo_type == 'compatible_accessories':
+                            combinations['vestuario_accesorios'] = items
+                        elif combo_type == 'compatible_accesorios':
+                            combinations['vestuario_accesorios'] = items
+                        
+        print(f"Combinaciones finales: {combinations}")  # Debug
+        return combinations
+    
+    def get_accessories(self, category, value):
+        """Obtiene accesorios para una prenda específica"""
+        # Implementar lógica de accesorios
+        return {"accesorios": ["necktie", "brooch", "pin"]}
+        

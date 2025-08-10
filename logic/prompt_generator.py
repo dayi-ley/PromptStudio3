@@ -23,6 +23,7 @@ class PromptGenerator:
             'vestuario_superior': [],
             'vestuario_inferior': [],
             'vestuario_accesorios': [],
+            'vestuario_contextual': [],  # NUEVA CATEGORÍA
             'ropa_interior_superior': [],
             'ropa_interior_inferior': [],
             'ropa_interior_accesorios': [],
@@ -104,9 +105,32 @@ class PromptGenerator:
             'ojos': ['blue eyes', 'brown eyes', 'green eyes', 'hazel eyes', 'gray eyes', 'purple eyes', 'red eyes'],
             
             # Vestuario
-            'vestuario_general': ['casual wear', 'formal wear', 'school uniform', 'swimwear', 'sportswear', 'traditional clothing'],
-            'vestuario_superior': ['blouse', 'sweater', 'tank top', 'jacket', 'dress shirt', 'crop top', 't-shirt'],
-            'vestuario_inferior': ['skirt', 'pants', 'shorts', 'leggings', 'dress', 'jeans', 'mini skirt'],
+            # Vestuario - EXPANDIDO CON SUBCATEGORÍAS
+            'vestuario_general': ['casual wear', 'formal wear', 'school uniform', 'swimwear', 'sportswear', 'traditional clothing', 'gothic style', 'punk style', 'vintage style'],
+            
+            # Vestuario Superior - MÁS OPCIONES
+            'vestuario_superior': [
+                # Camisetas y tops
+                'white t-shirt', 'black t-shirt', 'graphic t-shirt', 'tank top', 'crop top', 'halter top',
+                # Blusas y camisas
+                'white blouse', 'silk blouse', 'dress shirt', 'button-up shirt', 'off-shoulder top',
+                # Suéteres y chaquetas
+                'sweater', 'cardigan', 'hoodie', 'blazer', 'leather jacket', 'denim jacket',
+                # Formales
+                'business suit jacket', 'evening top', 'cocktail top'
+            ],
+            
+            # Vestuario Inferior - MÁS OPCIONES
+            'vestuario_inferior': [
+                # Faldas
+                'mini skirt', 'midi skirt', 'long skirt', 'pleated skirt', 'pencil skirt', 'flared skirt',
+                # Pantalones
+                'jeans', 'skinny jeans', 'wide-leg pants', 'dress pants', 'cargo pants', 'leggings',
+                # Shorts
+                'denim shorts', 'athletic shorts', 'high-waisted shorts', 'bermuda shorts',
+                # Vestidos
+                'casual dress', 'summer dress', 'cocktail dress', 'evening gown', 'maxi dress'
+            ],
             'vestuario_accesorios': ['belt', 'tie', 'scarf', 'gloves', 'socks', 'stockings'],
             'ropa_interior_superior': ['bra', 'sports bra', 'bandeau', 'camisole'],
             'ropa_interior_inferior': ['panties', 'thong', 'boyshorts', 'briefs'],
@@ -267,3 +291,15 @@ class PromptGenerator:
     
     def es_categoria_disponible(self, categoria):
         return categoria not in self.categorias_bloqueadas and categoria not in self.categorias_temporalmente_bloqueadas
+    
+    def add_contextual_suggestions(self, contextual_text):
+        """Agrega sugerencias contextuales al prompt"""
+        if contextual_text:
+            self.set_category_value('vestuario_contextual', contextual_text)
+    
+    def update_contextual_category(self, category, value):
+        """Actualiza una categoría específica con valor contextual"""
+        if value:
+            self.set_category_value(category, value)
+        elif category in self.category_values:
+            del self.category_values[category]

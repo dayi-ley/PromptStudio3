@@ -1,0 +1,287 @@
+{
+  "pose_global": {
+    "sitting": {
+      "pose_brazos": ["hands on lap", "hands on knees", "arms crossed"],
+      "pose_piernas": ["legs crossed", "legs together", "feet flat on floor"],
+      "expresion": ["relaxed", "comfortable", "casual"],
+      "vestuario_inferior": ["skirt", "dress", "comfortable pants"]
+    },
+    "standing": {
+      "pose_brazos": ["arms at sides", "hands on hips", "one hand on hip"],
+      "pose_piernas": ["legs slightly apart", "weight on one leg", "legs together"],
+      "expresion": ["confident", "alert", "ready"],
+      "accion": ["posing", "waiting", "looking ahead"]
+    },
+    "lying down": {
+      "pose_brazos": ["arms above head", "arms at sides", "one arm under head"],
+      "pose_piernas": ["legs straight", "legs bent", "legs crossed"],
+      "expresion": ["relaxed", "sleepy", "peaceful"],
+      "accion": ["resting", "sleeping", "reading"]
+    },
+    "walking": {
+      "pose_brazos": ["arms swinging", "hands in pockets", "carrying bag"],
+      "pose_piernas": ["one foot forward", "mid-stride", "dynamic pose"],
+      "expresion": ["focused", "happy", "determined"],
+      "accion": ["moving forward", "going somewhere", "in motion"]
+    }
+  },
+  "vestuario_general": {
+    "school uniform": {
+      "vestuario_superior": ["white shirt", "school blazer", "uniform blouse", "polo shirt"],
+      "vestuario_inferior": ["pleated skirt", "school skirt", "uniform pants", "knee-length skirt"],
+      "vestuario_accesorios": ["school bag", "hair ribbon", "school badge", "knee socks", "school shoes"],
+      "ropa_interior_superior": ["white bra", "sports bra", "simple bra"],
+      "ropa_interior_inferior": ["white panties", "simple underwear", "cotton panties"]
+    },
+    "casual outfit": {
+      "vestuario_superior": ["t-shirt", "tank top", "casual blouse", "hoodie"],
+      "vestuario_inferior": ["jeans", "shorts", "casual skirt", "leggings"],
+      "vestuario_accesorios": ["sneakers", "casual bag", "baseball cap", "simple jewelry"]
+    },
+    "formal outfit": {
+      "vestuario_superior": ["dress shirt", "blouse", "blazer", "formal top"],
+      "vestuario_inferior": ["dress pants", "pencil skirt", "formal skirt", "suit pants"],
+      "vestuario_accesorios": ["heels", "formal belt", "elegant jewelry", "dress shoes"]
+    },
+    "summer outfit": {
+      "vestuario_superior": ["tank top", "light blouse", "summer top", "sleeveless shirt"],
+      "vestuario_inferior": ["shorts", "summer skirt", "light dress", "capri pants"],
+      "vestuario_accesorios": ["sandals", "sun hat", "light accessories", "summer bag"]
+    },
+    "winter outfit": {
+      "vestuario_superior": ["sweater", "warm blouse", "long sleeve shirt", "cardigan"],
+      "vestuario_inferior": ["long pants", "warm skirt", "thick leggings", "winter dress"],
+      "vestuario_accesorios": ["boots", "scarf", "warm accessories", "winter coat"]
+    },
+    "party outfit": {
+      "vestuario_superior": ["party top", "elegant blouse", "dressy shirt", "glamorous top"],
+      "vestuario_inferior": ["party skirt", "cocktail dress", "elegant pants", "mini dress"],
+      "vestuario_accesorios": ["heels", "party jewelry", "clutch bag", "elegant accessories"]
+    },
+    "sporty outfit": {
+      "vestuario_superior": ["sports bra", "athletic top", "workout shirt", "gym top"],
+      "vestuario_inferior": ["leggings", "sports shorts", "athletic pants", "yoga pants"],
+      "vestuario_accesorios": ["sneakers", "sports bag", "athletic accessories", "gym shoes"]
+    }
+  },
+  
+
+  "vestuario_superior": {
+    "school uniform": {
+      "vestuario_inferior": ["pleated skirt", "school skirt", "uniform pants"],
+      "accesorios": ["school bag", "hair ribbon", "school badge"],
+      "fondo": ["classroom", "school hallway", "school yard"],
+      "accion": ["studying", "walking to class", "talking with friends"]
+    },
+    "casual shirt": {
+      "vestuario_inferior": ["jeans", "casual skirt", "shorts"],
+      "accesorios": ["casual bag", "simple jewelry", "sneakers"],
+      "expresion": ["relaxed", "casual", "friendly"]
+    },
+    "formal dress": {
+      "accesorios": ["elegant jewelry", "formal shoes", "clutch bag"],
+      "expresion": ["elegant", "sophisticated", "confident"],
+      "fondo": ["formal setting", "elegant room", "event venue"]
+    },
+    "white t-shirt": {
+      "vestuario_inferior": ["jeans", "denim shorts", "casual skirt", "leggings"],
+      "vestuario_accesorios": ["casual belt", "sneakers", "baseball cap"],
+      "estilo": ["casual", "relaxed", "everyday"]
+    },
+    "leather jacket": {
+      "vestuario_inferior": ["skinny jeans", "mini skirt", "leather pants"],
+      "vestuario_accesorios": ["boots", "dark accessories", "edgy jewelry"],
+      "estilo": ["edgy", "rock", "rebellious"]
+    },
+    "uniform blouse": {
+      "vestuario_inferior": ["pleated skirt", "school skirt", "uniform pants", "knee-length skirt"],
+      "vestuario_accesorios": ["school bag", "hair ribbon", "school badge", "knee socks"],
+      "fondo": ["classroom", "school hallway", "library"],
+      "accion": ["studying", "presenting", "taking notes"]
+    },
+    "polo shirt": {
+      "vestuario_inferior": ["pleated skirt", "uniform pants", "casual skirt", "shorts"],
+      "vestuario_accesorios": ["school bag", "casual belt", "sneakers", "school shoes"],
+      "expresion": ["confident", "casual", "sporty"],
+      "fondo": ["school yard", "sports field", "casual setting"]
+    },
+    "t-shirt": {
+      "vestuario_inferior": ["jeans", "shorts", "casual skirt", "leggings"],
+      "vestuario_accesorios": ["sneakers", "casual bag", "baseball cap", "simple jewelry"],
+      "expresion": ["relaxed", "casual", "friendly"],
+      "estilo": ["casual", "everyday", "comfortable"]
+    },
+    "tank top": {
+      "vestuario_inferior": ["shorts", "jeans", "summer skirt", "leggings"],
+      "vestuario_accesorios": ["sandals", "sun hat", "light accessories", "casual bag"],
+      "expresion": ["relaxed", "summery", "carefree"],
+      "fondo": ["beach", "park", "outdoor setting"]
+    },
+    "casual blouse": {
+      "vestuario_inferior": ["jeans", "casual skirt", "dress pants", "shorts"],
+      "vestuario_accesorios": ["casual belt", "simple jewelry", "flats", "casual bag"],
+      "expresion": ["friendly", "approachable", "casual"],
+      "estilo": ["casual", "comfortable", "versatile"]
+    },
+    "hoodie": {
+      "vestuario_inferior": ["jeans", "leggings", "sweatpants", "casual skirt"],
+      "vestuario_accesorios": ["sneakers", "backpack", "baseball cap", "casual accessories"],
+      "expresion": ["relaxed", "casual", "comfortable"],
+      "estilo": ["sporty", "casual", "cozy"]
+    },
+    "dress shirt": {
+      "vestuario_inferior": ["dress pants", "pencil skirt", "formal skirt", "suit pants"],
+      "vestuario_accesorios": ["formal belt", "heels", "elegant jewelry", "dress shoes"],
+      "expresion": ["professional", "confident", "sophisticated"],
+      "fondo": ["office", "business meeting", "formal setting"]
+    },
+    "blouse": {
+      "vestuario_inferior": ["dress pants", "pencil skirt", "jeans", "formal skirt"],
+      "vestuario_accesorios": ["heels", "elegant jewelry", "formal belt", "professional bag"],
+      "expresion": ["elegant", "professional", "sophisticated"],
+      "estilo": ["business", "elegant", "versatile"]
+    },
+    "blazer": {
+      "vestuario_inferior": ["dress pants", "pencil skirt", "formal skirt", "suit pants"],
+      "vestuario_accesorios": ["heels", "professional belt", "elegant jewelry", "briefcase"],
+      "expresion": ["confident", "professional", "authoritative"],
+      "fondo": ["office", "boardroom", "business setting"]
+    },
+    "sweater": {
+      "vestuario_inferior": ["jeans", "long pants", "warm skirt", "leggings"],
+      "vestuario_accesorios": ["boots", "scarf", "warm accessories", "cozy bag"],
+      "expresion": ["cozy", "warm", "comfortable"],
+      "fondo": ["indoor setting", "cafe", "cozy environment"]
+    }
+  },
+  
+
+  
+  "vestuario_inferior": {
+    "mini skirt": {
+      "vestuario_superior": ["crop top", "fitted blouse", "tank top"],
+      "vestuario_accesorios": ["heels", "thigh-high socks", "cute accessories"],
+      "estilo": ["youthful", "flirty", "trendy"]
+    },
+    "pencil skirt": {
+      "vestuario_superior": ["blouse", "dress shirt", "blazer"],
+      "vestuario_accesorios": ["heels", "professional belt", "elegant jewelry"],
+      "estilo": ["professional", "sophisticated", "formal"]
+    },
+    "pleated skirt": {
+      "vestuario_superior": ["white shirt", "school blazer", "uniform blouse", "polo shirt"],
+      "vestuario_accesorios": ["school bag", "hair ribbon", "school badge", "knee socks", "school shoes"],
+      "expresion": ["studious", "proper", "school-appropriate"],
+      "fondo": ["classroom", "school hallway", "school yard"]
+    },
+    "school skirt": {
+      "vestuario_superior": ["white shirt", "school blazer", "uniform blouse", "polo shirt"],
+      "vestuario_accesorios": ["school bag", "hair ribbon", "school badge", "knee socks"],
+      "expresion": ["confident", "studious", "school-ready"],
+      "accion": ["studying", "walking to class", "participating"]
+    },
+    "uniform pants": {
+      "vestuario_superior": ["white shirt", "school blazer", "uniform blouse", "polo shirt"],
+      "vestuario_accesorios": ["school bag", "belt", "school badge", "dress shoes"],
+      "expresion": ["professional", "neat", "formal"],
+      "fondo": ["classroom", "school office", "formal school setting"]
+    },
+    "knee-length skirt": {
+      "vestuario_superior": ["white shirt", "school blazer", "uniform blouse", "cardigan"],
+      "vestuario_accesorios": ["school bag", "hair accessories", "school badge", "knee socks"],
+      "expresion": ["modest", "appropriate", "school-compliant"],
+      "estilo": ["conservative", "proper", "school-appropriate"]
+    },
+    "jeans": {
+      "vestuario_superior": ["t-shirt", "casual blouse", "hoodie", "tank top"],
+      "vestuario_accesorios": ["sneakers", "casual belt", "casual bag", "baseball cap"],
+      "expresion": ["relaxed", "casual", "comfortable"],
+      "estilo": ["casual", "everyday", "street style"]
+    },
+    "shorts": {
+      "vestuario_superior": ["t-shirt", "tank top", "casual blouse", "polo shirt"],
+      "vestuario_accesorios": ["sneakers", "sandals", "casual bag", "sun hat"],
+      "expresion": ["relaxed", "summery", "active"],
+      "fondo": ["outdoor setting", "beach", "park", "casual environment"]
+    },
+    "casual skirt": {
+      "vestuario_superior": ["t-shirt", "casual blouse", "tank top", "light sweater"],
+      "vestuario_accesorios": ["flats", "sandals", "casual bag", "simple jewelry"],
+      "expresion": ["feminine", "casual", "comfortable"],
+      "estilo": ["casual", "feminine", "versatile"]
+    },
+    "leggings": {
+      "vestuario_superior": ["hoodie", "t-shirt", "tank top", "sweater"],
+      "vestuario_accesorios": ["sneakers", "sports bag", "athletic accessories", "casual belt"],
+      "expresion": ["sporty", "comfortable", "active"],
+      "estilo": ["athletic", "casual", "comfortable"]
+    }
+  },
+  "expresion": {
+    "smiling": {
+      "ojos": ["bright eyes", "sparkling eyes", "happy eyes"],
+      "accion": ["laughing", "enjoying", "having fun"],
+      "pose_global": ["relaxed pose", "open posture"]
+    },
+    "serious": {
+      "ojos": ["focused eyes", "intense gaze", "determined eyes"],
+      "pose_brazos": ["crossed arms", "hands clasped"],
+      "accion": ["concentrating", "thinking", "working"]
+    }
+  },
+  "accion": {
+    "reading": {
+      "pose_global": ["sitting", "lying down"],
+      "pose_brazos": ["holding book", "hands on book"],
+      "expresion": ["concentrated", "peaceful", "absorbed"],
+      "accesorios": ["glasses", "bookmark"]
+    },
+    "studying": {
+      "pose_global": ["sitting"],
+      "pose_brazos": ["writing", "holding pen"],
+      "expresion": ["focused", "concentrated"],
+      "fondo": ["desk", "library", "study room"],
+      "accesorios": ["books", "notebooks", "pen"]
+    }
+  },
+  "estilo_coordinado": {
+    "casual_style": {
+      "vestuario_superior": ["t-shirt", "tank top", "casual blouse"],
+      "vestuario_inferior": ["jeans", "shorts", "casual skirt"],
+      "vestuario_accesorios": ["sneakers", "casual bag", "simple jewelry"]
+    },
+    "formal_style": {
+      "vestuario_superior": ["blouse", "dress shirt", "blazer"],
+      "vestuario_inferior": ["dress pants", "pencil skirt", "formal dress"],
+      "vestuario_accesorios": ["heels", "formal belt", "elegant jewelry"]
+    },
+    "edgy_style": {
+      "vestuario_superior": ["leather jacket", "band t-shirt", "crop top"],
+      "vestuario_inferior": ["skinny jeans", "leather skirt", "ripped jeans"],
+      "vestuario_accesorios": ["boots", "dark accessories", "edgy jewelry"]
+    }
+  },
+  "combinaciones_vestuario": {
+    "school_blazer": {
+      "compatible_superior": ["white shirt", "polo shirt", "uniform blouse", "light sweater"],
+      "description": "Garments that can be worn under or with the school blazer"
+    },
+    "white_shirt": {
+      "compatible_accessories": ["necktie", "bow tie", "school badge", "vest"],
+      "description": "Accessories that complement a white shirt"
+    },
+    "uniform_blouse": {
+      "compatible_superior": ["light sweater","school blazer","cardigan","vest"],
+      "description": "Garments that can be layered with a school uniform blouse"
+    },
+    "polo_shirt": {
+    "compatible_superior": ["school blazer","light sweater","cardigan","vest"
+    ],
+    "description": "Garments that can be worn over or with a polo shirt in a school setting"
+    },
+  "accessories": {
+    "school": ["necktie", "bow tie", "school badge", "hair ribbon", "school bag"],
+    "casual": ["belt", "watch", "bracelet", "necklace", "earrings"]
+  }
+  }
+}
