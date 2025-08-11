@@ -365,15 +365,23 @@ class SuggestionPanel(QWidget):
             self._show_end_message(column_index)
     
     def _get_next_column_data_simple(self, column_title):
-        """Obtiene datos de manera simple basado en el título de la columna"""
         if column_title == "Combinaciones":
-            # Obtener la última selección de prenda principal
             for selection in reversed(self.selection_history):
                 if selection['column_index'] == 0:
-                    return self.suggestion_engine.get_combinations(selection['category'], selection['value'])
+                    return self.suggestion_engine.get_combinations_only(selection['category'], selection['value'])
         elif column_title == "Accesorios":
-            return self.suggestion_engine.get_accessories("", "")
-        
+            # LÓGICA INTELIGENTE: Detectar si es vestuario superior o inferior
+            for selection in reversed(self.selection_history):
+                if selection['column_index'] == 0:
+                    # Verificar si la prenda principal tiene combinaciones
+                    combinations = self.suggestion_engine.get_combinations_only(selection['category'], selection['value'])
+                    
+                    if combinations and 'vestuario_inferior' in combinations:
+                        # Es vestuario superior -> usar prenda principal
+                        return self.suggestion_engine.get_accessories_only(selection['category'], selection['value'])
+                    else:
+                        # Es vestuario inferior -> usar prenda principal también
+                        return self.suggestion_engine.get_accessories_only(selection['category'], selection['value'])
         return None
     
     def _show_skip_indicator_in_column(self, column_widget, column_title):
@@ -423,6 +431,13 @@ class SuggestionPanel(QWidget):
         root_item.setFont(0, QFont("Segoe UI", 10, QFont.Weight.Bold))
         root_item.setForeground(0, QColor(70, 130, 180))
         
+        # Obtener traducciones de la selección principal
+        translations = {}
+        for selection in reversed(self.selection_history):
+            if selection['column_index'] == 0:
+                translations = self.suggestion_engine.get_translations(selection['category'], selection['value'])
+                break
+        
         # Procesar datos por categoría
         for category, suggestions in data.items():
             if suggestions:
@@ -435,9 +450,17 @@ class SuggestionPanel(QWidget):
                 
                 # Agregar sugerencias con traducciones
                 for suggestion in suggestions[:6]:  # Limitar a 6
-                    self._create_item_with_translation(
-                        tree_widget, suggestion, category, category_item
-                    )
+                    item = QTreeWidgetItem(category_item)
+                    item.setText(0, f"✨ {suggestion}")
+                    
+                    # Agregar tooltip con traducción
+                    item_key = suggestion.lower().replace(' ', '_')
+                    if item_key in translations:
+                        item.setToolTip(0, translations[item_key])
+                    
+                    item.setFont(0, QFont("Segoe UI", 8))
+                    item.setForeground(0, QColor(255, 255, 255))
+                    item.setData(0, Qt.ItemDataRole.UserRole, (category, suggestion))
         
         # Expandir todo
         tree_widget.expandAll()
@@ -682,6 +705,12 @@ class SuggestionPanel(QWidget):
                             suggestion_item.setText(0, f"✨ {suggestion}")
                             suggestion_item.setForeground(0, self.tree_widget.palette().color(self.tree_widget.palette().ColorRole.LinkVisited))
                             suggestion_item.setFont(0, QFont("Segoe UI", 8))
+                        
+                        # AGREGAR TOOLTIP CON TRADUCCIÓN DESDE ARCHIVO
+                        suggestion_key = suggestion.lower().replace(' ', '_')
+                        translation = self.suggestion_engine.get_translation(related_category, suggestion_key)
+                        if translation:
+                            suggestion_item.setToolTip(0, translation)
                         
                         suggestion_item.setData(0, Qt.ItemDataRole.UserRole, (related_category, suggestion))
         
@@ -970,7 +999,7 @@ class SuggestionPanel(QWidget):
         next_column_index = column_index + 1
         if not self._column_exists(next_column_index):
             if column_index == 1:  # Desde Combinaciones
-                self._show_next_column("", "(saltado)", 2, "Accesorios")
+                self._show_next_column(2, "Accesorios")
             elif column_index == 2:  # Desde Accesorios
                 self._show_color_column_for_all_garments(3)
         

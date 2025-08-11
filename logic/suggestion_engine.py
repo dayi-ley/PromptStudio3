@@ -4,7 +4,35 @@ import os
 class SuggestionEngine:
     def __init__(self):
         self.suggestion_rules = self._load_suggestion_rules()
-        
+        self.translations = self._load_translations()  # NUEVO
+    
+    def _load_translations(self):
+        """Carga las traducciones desde el archivo JSON"""
+        try:
+            translations_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'translations.json')
+            with open(translations_path, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except FileNotFoundError:
+            print("Archivo de traducciones no encontrado")
+            return {}
+        except json.JSONDecodeError:
+            print("Error al decodificar el archivo de traducciones")
+            return {}
+    
+    def get_translation(self, category, item_key, language='es'):
+        """Obtiene la traducción de un elemento específico"""
+        try:
+            return self.translations[language][category][item_key]
+        except KeyError:
+            return None  # Si no hay traducción, devolver None
+    
+    def get_translations_for_category(self, category, language='es'):
+        """Obtiene todas las traducciones para una categoría"""
+        try:
+            return self.translations[language].get(category, {})
+        except KeyError:
+            return {}
+    
     def _load_suggestion_rules(self):
         """Carga las reglas de sugerencias desde el archivo JSON"""
         try:
@@ -107,8 +135,11 @@ class SuggestionEngine:
         # Buscar en las reglas de combinaciones
         if 'combinaciones_vestuario' in self.suggestion_rules:
             # Normalizar el valor para buscar
+            # Línea 193 - Cambiar de:
             search_key = value.lower().replace(' ', '_')
             
+            # A:
+            search_key = value.lower().replace(' ', '_').replace('-', '_')
             combo_rules = self.suggestion_rules['combinaciones_vestuario']
             
             print(f"Buscando clave: {search_key}")  # Debug
@@ -135,8 +166,60 @@ class SuggestionEngine:
         print(f"Combinaciones finales: {combinations}")  # Debug
         return combinations
     
-    def get_accessories(self, category, value):
-        """Obtiene accesorios para una prenda específica"""
-        # Implementar lógica de accesorios
-        return {"accesorios": ["necktie", "brooch", "pin"]}
+    def get_combinations_only(self, category, value):
+        """Obtiene SOLO combinaciones (vestuario) sin accesorios"""
+        combinations = {}
+        
+        if 'combinaciones_vestuario' in self.suggestion_rules:
+            search_key = value.lower().replace(' ', '_')
+            combo_rules = self.suggestion_rules['combinaciones_vestuario']
+            
+            if search_key in combo_rules:
+                combo_data = combo_rules[search_key]
+                
+                # Solo obtener combinaciones de vestuario, NO accesorios
+                for combo_type, items in combo_data.items():
+                    if combo_type.startswith('compatible_') and isinstance(items, list):
+                        if combo_type == 'compatible_superior':
+                            combinations['vestuario_superior'] = items
+                        elif combo_type == 'compatible_inferior':
+                            combinations['vestuario_inferior'] = items
+                        # NO incluir compatible_accessories aquí
+                        
+        return combinations
+    
+    def get_accessories_only(self, category, value):
+        """Obtiene SOLO accesorios para una prenda específica"""
+        accessories = {}
+        
+        if 'combinaciones_vestuario' in self.suggestion_rules:
+            search_key = value.lower().replace(' ', '_')
+            combo_rules = self.suggestion_rules['combinaciones_vestuario']
+            
+            if search_key in combo_rules:
+                combo_data = combo_rules[search_key]
+                
+                # Solo obtener accesorios
+                for combo_type, items in combo_data.items():
+                    if combo_type in ['compatible_accessories', 'compatible_accesorios'] and isinstance(items, list):
+                        accessories['vestuario_accesorios'] = items
+                        
+        return accessories
+    
+    def get_translations(self, category, value):
+        """Obtiene las traducciones para una prenda específica"""
+        translations = {}
+        
+        if 'combinaciones_vestuario' in self.suggestion_rules:
+            search_key = value.lower().replace(' ', '_')
+            combo_rules = self.suggestion_rules['combinaciones_vestuario']
+            
+            if search_key in combo_rules:
+                combo_data = combo_rules[search_key]
+                
+                # Obtener traducciones si existen
+                if 'translations' in combo_data and isinstance(combo_data['translations'], dict):
+                    translations = combo_data['translations']
+                        
+        return translations
         

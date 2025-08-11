@@ -28,40 +28,61 @@
   "vestuario_general": {
     "school uniform": {
       "vestuario_superior": ["white shirt", "school blazer", "uniform blouse", "polo shirt"],
-      "vestuario_inferior": ["pleated skirt", "school skirt", "uniform pants", "knee-length skirt"],
-      "vestuario_accesorios": ["school bag", "hair ribbon", "school badge", "knee socks", "school shoes"],
+      "vestuario_inferior": ["pleated skirt", "school skirt", "uniform pants", "knee length skirt"],
+      "vestuario_cabeza": ["school hat", "hair ribbon", "school headband", "simple ponytail"],
+      "vestuario_piernas_pies": ["knee socks", "school shoes", "mary janes", "black shoes"],
+      "vestuario_brazos_manos": ["school gloves", "wrist watch", "simple bracelet"],
+      "vestuario_accesorios": ["school bag", "school badge", "belt", "school tie"],
       "ropa_interior_superior": ["white bra", "sports bra", "simple bra"],
       "ropa_interior_inferior": ["white panties", "simple underwear", "cotton panties"]
     },
     "casual outfit": {
       "vestuario_superior": ["t-shirt", "tank top", "casual blouse", "hoodie"],
       "vestuario_inferior": ["jeans", "shorts", "casual skirt", "leggings"],
-      "vestuario_accesorios": ["sneakers", "casual bag", "baseball cap", "simple jewelry"]
+      "vestuario_cabeza": ["baseball cap", "beanie", "headband", "ponytail"],
+      "vestuario_piernas_pies": ["sneakers", "ankle socks", "casual boots", "canvas shoes"],
+      "vestuario_brazos_manos": ["watch", "bracelets", "casual gloves", "friendship bands"],
+      "vestuario_accesorios": ["casual bag", "backpack", "simple jewelry", "casual belt"]
     },
     "formal outfit": {
       "vestuario_superior": ["dress shirt", "blouse", "blazer", "formal top"],
       "vestuario_inferior": ["dress pants", "pencil skirt", "formal skirt", "suit pants"],
-      "vestuario_accesorios": ["heels", "formal belt", "elegant jewelry", "dress shoes"]
+      "vestuario_cabeza": ["elegant hair clip", "formal headband", "sophisticated updo"],
+      "vestuario_piernas_pies": ["heels", "dress shoes", "formal boots", "stockings"],
+      "vestuario_brazos_manos": ["elegant watch", "formal gloves", "dress rings", "cufflinks"],
+      "vestuario_accesorios": ["formal belt", "elegant jewelry", "clutch bag", "tie"]
     },
     "summer outfit": {
       "vestuario_superior": ["tank top", "light blouse", "summer top", "sleeveless shirt"],
       "vestuario_inferior": ["shorts", "summer skirt", "light dress", "capri pants"],
-      "vestuario_accesorios": ["sandals", "sun hat", "light accessories", "summer bag"]
+      "vestuario_cabeza": ["sun hat", "visor", "hair tie", "summer headband"],
+      "vestuario_piernas_pies": ["sandals", "flip flops", "summer shoes", "bare feet"],
+      "vestuario_brazos_manos": ["summer bracelet", "light watch", "sun protection gloves"],
+      "vestuario_accesorios": ["summer bag", "sunglasses", "light accessories", "beach bag"]
     },
     "winter outfit": {
       "vestuario_superior": ["sweater", "warm blouse", "long sleeve shirt", "cardigan"],
       "vestuario_inferior": ["long pants", "warm skirt", "thick leggings", "winter dress"],
-      "vestuario_accesorios": ["boots", "scarf", "warm accessories", "winter coat"]
+      "vestuario_cabeza": ["winter hat", "beanie", "ear muffs", "warm headband"],
+      "vestuario_piernas_pies": ["boots", "warm socks", "winter shoes", "thick tights"],
+      "vestuario_brazos_manos": ["gloves", "mittens", "warm sleeves", "winter watch"],
+      "vestuario_accesorios": ["scarf", "warm accessories", "winter bag", "coat"]
     },
     "party outfit": {
       "vestuario_superior": ["party top", "elegant blouse", "dressy shirt", "glamorous top"],
       "vestuario_inferior": ["party skirt", "cocktail dress", "elegant pants", "mini dress"],
-      "vestuario_accesorios": ["heels", "party jewelry", "clutch bag", "elegant accessories"]
+      "vestuario_cabeza": ["party hair accessory", "elegant headpiece", "glamorous hairstyle"],
+      "vestuario_piernas_pies": ["heels", "party shoes", "elegant boots", "dressy sandals"],
+      "vestuario_brazos_manos": ["party jewelry", "elegant gloves", "statement rings", "glamorous watch"],
+      "vestuario_accesorios": ["clutch bag", "party jewelry", "elegant accessories", "evening bag"]
     },
     "sporty outfit": {
       "vestuario_superior": ["sports bra", "athletic top", "workout shirt", "gym top"],
       "vestuario_inferior": ["leggings", "sports shorts", "athletic pants", "yoga pants"],
-      "vestuario_accesorios": ["sneakers", "sports bag", "athletic accessories", "gym shoes"]
+      "vestuario_cabeza": ["sports headband", "cap", "ponytail", "sweatband"],
+      "vestuario_piernas_pies": ["sneakers", "athletic socks", "gym shoes", "sports boots"],
+      "vestuario_brazos_manos": ["sports watch", "wrist bands", "athletic gloves", "fitness tracker"],
+      "vestuario_accesorios": ["sports bag", "gym bag", "athletic accessories", "water bottle"]
     }
   },
   
@@ -168,41 +189,16 @@
       "vestuario_accesorios": ["heels", "professional belt", "elegant jewelry"],
       "estilo": ["professional", "sophisticated", "formal"]
     },
-    "pleated skirt": {
-      "vestuario_superior": ["white shirt", "school blazer", "uniform blouse", "polo shirt"],
-      "vestuario_accesorios": ["school bag", "hair ribbon", "school badge", "knee socks", "school shoes"],
-      "expresion": ["studious", "proper", "school-appropriate"],
-      "fondo": ["classroom", "school hallway", "school yard"]
-    },
-    "school skirt": {
-      "vestuario_superior": ["white shirt", "school blazer", "uniform blouse", "polo shirt"],
-      "vestuario_accesorios": ["school bag", "hair ribbon", "school badge", "knee socks"],
-      "expresion": ["confident", "studious", "school-ready"],
-      "accion": ["studying", "walking to class", "participating"]
-    },
-    "uniform pants": {
-      "vestuario_superior": ["white shirt", "school blazer", "uniform blouse", "polo shirt"],
-      "vestuario_accesorios": ["school bag", "belt", "school badge", "dress shoes"],
-      "expresion": ["professional", "neat", "formal"],
-      "fondo": ["classroom", "school office", "formal school setting"]
-    },
-    "knee-length skirt": {
-      "vestuario_superior": ["white shirt", "school blazer", "uniform blouse", "cardigan"],
-      "vestuario_accesorios": ["school bag", "hair accessories", "school badge", "knee socks"],
-      "expresion": ["modest", "appropriate", "school-compliant"],
-      "estilo": ["conservative", "proper", "school-appropriate"]
-    },
+
     "jeans": {
-      "vestuario_superior": ["t-shirt", "casual blouse", "hoodie", "tank top"],
-      "vestuario_accesorios": ["sneakers", "casual belt", "casual bag", "baseball cap"],
-      "expresion": ["relaxed", "casual", "comfortable"],
-      "estilo": ["casual", "everyday", "street style"]
+      "compatible_superior": ["t-shirt", "casual blouse", "hoodie", "tank top"],
+      "compatible_accessories": ["sneakers", "casual belt", "casual bag", "baseball cap"],
+      "description": "Casual combinations for jeans"
     },
     "shorts": {
-      "vestuario_superior": ["t-shirt", "tank top", "casual blouse", "polo shirt"],
-      "vestuario_accesorios": ["sneakers", "sandals", "casual bag", "sun hat"],
-      "expresion": ["relaxed", "summery", "active"],
-      "fondo": ["outdoor setting", "beach", "park", "casual environment"]
+      "compatible_superior": ["t-shirt", "tank top", "casual blouse", "polo shirt"],
+      "compatible_accessories": ["sneakers", "sandals", "casual bag", "sun hat"],
+      "description": "Summer casual combinations for shorts"
     },
     "casual skirt": {
       "vestuario_superior": ["t-shirt", "casual blouse", "tank top", "light sweater"],
@@ -263,25 +259,124 @@
   },
   "combinaciones_vestuario": {
     "school_blazer": {
-      "compatible_superior": ["white shirt", "polo shirt", "uniform blouse", "light sweater"],
-      "description": "Garments that can be worn under or with the school blazer"
+      "compatible_superior": ["white_shirt", "polo_shirt", "uniform_blouse", "light_sweater"],
+      "compatible_accessories": ["school_badge", "necktie", "bow_tie", "vest"],
+      "translations": {
+        "school_blazer": "Blazer escolar",
+        "white_shirt": "Camisa blanca",
+        "polo_shirt": "Polo escolar",
+        "uniform_blouse": "Blusa de uniforme",
+        "light_sweater": "Suéter ligero",
+        "school_badge": "Insignia escolar",
+        "necktie": "Corbata",
+        "bow_tie": "Corbatín",
+        "vest": "Chaleco"
+      }
     },
     "white_shirt": {
-      "compatible_accessories": ["necktie", "bow tie", "school badge", "vest"],
-      "description": "Accessories that complement a white shirt"
+      "compatible_superior": ["school_blazer", "light_sweater", "cardigan", "vest"],
+      "compatible_accessories": ["school_badge", "necktie", "bow_tie"],
+      "translations": {
+        "white_shirt": "Camisa blanca",
+        "school_blazer": "Blazer escolar",
+        "light_sweater": "Suéter ligero",
+        "cardigan": "Cárdigan",
+        "vest": "Chaleco",
+        "school_badge": "Insignia escolar",
+        "necktie": "Corbata",
+        "bow_tie": "Corbatín"
+      }
     },
     "uniform_blouse": {
-      "compatible_superior": ["light sweater","school blazer","cardigan","vest"],
-      "description": "Garments that can be layered with a school uniform blouse"
+      "compatible_superior": ["school_blazer", "light_sweater", "cardigan", "vest"],
+      "compatible_accessories": ["school_badge", "necktie"],
+      "translations": {
+        "uniform_blouse": "Blusa de uniforme",
+        "school_blazer": "Blazer escolar",
+        "light_sweater": "Suéter ligero",
+        "cardigan": "Cárdigan",
+        "vest": "Chaleco",
+        "school_badge": "Insignia escolar",
+        "necktie": "Corbata"
+      }
     },
     "polo_shirt": {
-    "compatible_superior": ["school blazer","light sweater","cardigan","vest"
-    ],
-    "description": "Garments that can be worn over or with a polo shirt in a school setting"
+      "compatible_superior": ["school_blazer", "light_sweater", "cardigan", "vest"],
+      "compatible_accessories": ["school_badge"],
+      "translations": {
+        "polo_shirt": "Polo escolar",
+        "school_blazer": "Blazer escolar",
+        "light_sweater": "Suéter ligero",
+        "cardigan": "Cárdigan",
+        "vest": "Chaleco",
+        "school_badge": "Insignia escolar"
+      }
     },
-  "accessories": {
-    "school": ["necktie", "bow tie", "school badge", "hair ribbon", "school bag"],
-    "casual": ["belt", "watch", "bracelet", "necklace", "earrings"]
+
+    "pleated_skirt": {
+      "compatible_inferior": ["knee-length skirt", "school skirt", "uniform shorts"],
+      "compatible_accessories": ["belt", "knee socks", "tights", "leg warmers"],
+      "description": "Alternative bottom wear that coordinates with pleated skirt style",
+      "translations": {
+        "pleated_skirt": "Falda plisada",
+        "knee_length_skirt": "Falda hasta la rodilla",
+        "school_skirt": "Falda escolar",
+        "uniform_shorts": "Pantalones cortos de uniforme",
+        "belt": "Cinturón",
+        "knee_socks": "Medias hasta la rodilla",
+        "tights": "Medias",
+        "leg_warmers": "Calentadores de piernas"
+      }
+    },
+    "school_skirt": {
+      "compatible_inferior": ["pleated skirt", "plaid skirt", "knee length skirt", "uniform shorts"],
+      "compatible_accessories": ["knee socks", "tights", "loafers", "belt"],
+      "translations": {
+        "school_skirt": "Falda escolar",
+        "pleated_skirt": "Falda plisada",
+        "plaid_skirt": "Falda a cuadros",
+        "knee_length_skirt": "Falda hasta la rodilla",
+        "uniform_shorts": "Pantalones cortos de uniforme",
+        "knee_socks": "Medias hasta la rodilla",
+        "tights": "Medias",
+        "loafers": "Mocasines",
+        "belt": "Cinturón"
+    }
+    },
+    "uniform_pants": {
+      "compatible_inferior": ["pleated trousers", "ankle length pants", "capri uniform pants"],
+      "compatible_accessories": ["belt", "dress shoes", "ankle socks", "school bag"],
+      "description": "Alternative school bottom wear options that can replace or match uniform pants, with accessories suited to both options", 
+      "translations": {
+        "uniform_pants": "Pantalón de uniforme",
+        "pleated_trousers": "Pantalones plisados",
+        "ankle_length_pants": "Pantalones hasta el tobillo",
+        "capri_uniform_pants": "Pantalones capri de uniforme",
+        "belt": "Cinturón",
+        "dress_shoes": "Zapatos de vestir",
+        "ankle_socks": "Calcetines hasta el tobillo",
+        "school_bag": "Mochila escolar"
+      }
+    },
+    "knee_length_skirt": {
+      "compatible_inferior": ["pleated_skirt", "plaid_skirt", "school_skirt", "uniform_shorts"],
+      "compatible_accessories": ["knee_socks", "tights", "belt", "mary_jane_shoes"],
+      "translations": {
+      "knee_length_skirt": "Falda hasta la rodilla",
+        "pleated_skirt": "Falda plisada",
+        "plaid_skirt": "Falda a cuadros",
+        "school_skirt": "Falda escolar",
+        "uniform_shorts": "Pantalones cortos de uniforme",
+        "knee_socks": "Medias hasta la rodilla",
+        "tights": "Medias",
+        "belt": "Cinturón",
+        "mary_jane_shoes": "Zapatos tipo Mary Jane"
+    }
+  },
+      
+    "accessories": {
+      "school": ["necktie", "bow tie", "school badge", "hair ribbon", "school bag"],
+      "casual": ["belt", "watch", "bracelet", "necklace", "earrings"]
   }
   }
 }
